@@ -27,9 +27,11 @@ const Navbar: React.FC<NavbarProps> = ({ mode }) => {
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Why Us', href: '#features' },
     { label: 'Trust & Safety', href: '#trust' },
+    { label: 'Cook Partner Portal 👨‍🍳', href: '#cook' },
   ];
 
   const cookNavLinks = [
+    { label: 'Customer Site 🏠', href: '#' },
     { label: 'Partner Benefits', href: '#cook-benefits' },
     { label: 'Earnings Calculator', href: '#cook-earnings' },
     { label: 'Apply Now', href: '#cook-apply' },
