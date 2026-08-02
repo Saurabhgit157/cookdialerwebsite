@@ -8,7 +8,7 @@ interface NavbarProps {
   onModeChange: (newMode: 'customer' | 'cook') => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ mode }) => {
+const Navbar: React.FC<NavbarProps> = ({ mode, onModeChange }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -50,7 +50,14 @@ const Navbar: React.FC<NavbarProps> = ({ mode }) => {
       >
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
-          <a href="?" className="flex items-center gap-3 group z-50">
+          <a
+            href="?"
+            onClick={(e) => {
+              e.preventDefault();
+              onModeChange('customer');
+            }}
+            className="flex items-center gap-3 group z-50 cursor-pointer"
+          >
             <div className={`relative w-10 h-10 rounded-xl p-[1.5px] shadow-sm ${isCook ? 'bg-gradient-to-tr from-[#10B981] to-[#047857] shadow-emerald-500/20' : 'bg-gradient-to-tr from-[#FF4747] to-[#FF8A00] shadow-[#FF4747]/20'}`}>
               <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1.5">
                 <img
@@ -70,24 +77,42 @@ const Navbar: React.FC<NavbarProps> = ({ mode }) => {
             </div>
           </a>
 
-
-
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-7">
-            {activeLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors tracking-tight"
-              >
-                {link.label}
-              </a>
-            ))}
+            {activeLinks.map((link) => {
+              const isPortalSwitch = link.label.includes('Cook Partner') || link.label.includes('Customer Site');
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => {
+                    if (isPortalSwitch) {
+                      e.preventDefault();
+                      onModeChange(isCook ? 'customer' : 'cook');
+                    }
+                  }}
+                  className={`text-sm font-semibold transition-colors tracking-tight ${
+                    isPortalSwitch
+                      ? isCook
+                        ? 'px-3 py-1.5 rounded-full bg-slate-100 text-slate-900 border border-slate-300 font-bold hover:bg-slate-200'
+                        : 'px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold hover:bg-emerald-100'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Action Button */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant={isCook ? 'secondary' : 'primary'} size="sm" href={isCook ? '#cook-apply' : PLAY_STORE_URL} target={isCook ? '_self' : '_blank'}>
+            <Button
+              variant={isCook ? 'secondary' : 'primary'}
+              size="sm"
+              href={isCook ? '#cook-apply' : PLAY_STORE_URL}
+              target={isCook ? '_self' : '_blank'}
+            >
               {isCook ? 'Apply as Cook' : '📱 Download App'}
             </Button>
           </div>
@@ -119,16 +144,25 @@ const Navbar: React.FC<NavbarProps> = ({ mode }) => {
 
 
             <nav className="flex flex-col gap-6 text-center">
-              {activeLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-2xl font-black text-slate-800 hover:text-[#FF4747] transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {activeLinks.map((link) => {
+                const isPortalSwitch = link.label.includes('Cook Partner') || link.label.includes('Customer Site');
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => {
+                      if (isPortalSwitch) {
+                        e.preventDefault();
+                        onModeChange(isCook ? 'customer' : 'cook');
+                      }
+                      setMobileMenuOpen(false);
+                    }}
+                    className="text-2xl font-black text-slate-800 hover:text-[#FF4747] transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
             </nav>
           </motion.div>
         )}

@@ -55,6 +55,8 @@ export default function App() {
 
   const handleModeChange = (newMode: 'customer' | 'cook') => {
     setMode(newMode);
+    const newTarget = newMode === 'cook' ? '?portal=cook' : window.location.pathname;
+    window.history.pushState({}, '', newTarget);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
