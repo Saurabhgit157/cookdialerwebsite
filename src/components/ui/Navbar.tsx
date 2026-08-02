@@ -27,11 +27,9 @@ const Navbar: React.FC<NavbarProps> = ({ mode, onModeChange }) => {
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Why Us', href: '#features' },
     { label: 'Trust & Safety', href: '#trust' },
-    { label: 'Cook Partner Portal 👨‍🍳', href: '?portal=cook' },
   ];
 
   const cookNavLinks = [
-    { label: 'Customer Site 🏠', href: '?' },
     { label: 'Partner Benefits', href: '#cook-benefits' },
     { label: 'Earnings Calculator', href: '#cook-earnings' },
     { label: 'Apply Now', href: '#cook-apply' },
@@ -51,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ mode, onModeChange }) => {
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <a
-            href="?"
+            href="#"
             onClick={(e) => {
               e.preventDefault();
               onModeChange('customer');
@@ -79,34 +77,45 @@ const Navbar: React.FC<NavbarProps> = ({ mode, onModeChange }) => {
 
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-7">
-            {activeLinks.map((link) => {
-              const isPortalSwitch = link.label.includes('Cook Partner') || link.label.includes('Customer Site');
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => {
-                    if (isPortalSwitch) {
-                      e.preventDefault();
-                      onModeChange(isCook ? 'customer' : 'cook');
-                    }
-                  }}
-                  className={`text-sm font-semibold transition-colors tracking-tight ${
-                    isPortalSwitch
-                      ? isCook
-                        ? 'px-3 py-1.5 rounded-full bg-slate-100 text-slate-900 border border-slate-300 font-bold hover:bg-slate-200'
-                        : 'px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold hover:bg-emerald-100'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
+            {activeLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors tracking-tight"
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
 
-          {/* Action Button */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Mode Switcher Pill & Action Button */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Segmented Mode Switcher */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-full border border-slate-200 shadow-inner">
+              <button
+                type="button"
+                onClick={() => onModeChange('customer')}
+                className={`px-3 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
+                  !isCook
+                    ? 'bg-gradient-to-r from-[#FF4747] to-[#FF8A00] text-white shadow-md'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                🏠 For Customers
+              </button>
+              <button
+                type="button"
+                onClick={() => onModeChange('cook')}
+                className={`px-3 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
+                  isCook
+                    ? 'bg-gradient-to-r from-[#10B981] to-[#047857] text-white shadow-md'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                🍳 For Cook Partners
+              </button>
+            </div>
+
             <Button
               variant={isCook ? 'secondary' : 'primary'}
               size="sm"
@@ -143,26 +152,49 @@ const Navbar: React.FC<NavbarProps> = ({ mode, onModeChange }) => {
           >
 
 
+            {/* Mobile Segmented Mode Switcher */}
+            <div className="flex items-center justify-center bg-slate-100 p-1.5 rounded-2xl border border-slate-200 mb-8 max-w-xs mx-auto shadow-inner">
+              <button
+                type="button"
+                onClick={() => {
+                  onModeChange('customer');
+                  setMobileMenuOpen(false);
+                }}
+                className={`flex-1 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                  !isCook
+                    ? 'bg-gradient-to-r from-[#FF4747] to-[#FF8A00] text-white shadow-md'
+                    : 'text-slate-600'
+                }`}
+              >
+                🏠 Customer
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onModeChange('cook');
+                  setMobileMenuOpen(false);
+                }}
+                className={`flex-1 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                  isCook
+                    ? 'bg-gradient-to-r from-[#10B981] to-[#047857] text-white shadow-md'
+                    : 'text-slate-600'
+                }`}
+              >
+                🍳 Cook Partner
+              </button>
+            </div>
+
             <nav className="flex flex-col gap-6 text-center">
-              {activeLinks.map((link) => {
-                const isPortalSwitch = link.label.includes('Cook Partner') || link.label.includes('Customer Site');
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={(e) => {
-                      if (isPortalSwitch) {
-                        e.preventDefault();
-                        onModeChange(isCook ? 'customer' : 'cook');
-                      }
-                      setMobileMenuOpen(false);
-                    }}
-                    className="text-2xl font-black text-slate-800 hover:text-[#FF4747] transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                );
-              })}
+              {activeLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-2xl font-black text-slate-800 hover:text-[#FF4747] transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
             </nav>
           </motion.div>
         )}
