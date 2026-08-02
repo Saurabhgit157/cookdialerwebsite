@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', 'Poppins', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  
+  /* Premium Light Mode Palette */
+  --color-primary-brand: #FF4747; /* Vibrant Coral Red */
+  --color-primary-gradient-start: #FF4747;
+  --color-primary-gradient-end: #FF8A00; /* Warm Amber */
+  
+  --color-cook-brand: #059669; /* Trustworthy Emerald */
+  --color-cook-gradient-start: #10B981;
+  --color-cook-gradient-end: #047857;
+
+  --color-bg-base: #FFFFFF;
+  --color-bg-surface: #F8FAFC; /* Light slate/pearl */
+  --color-bg-card: #FFFFFF;
+  
+  --color-text-primary: #0F172A; /* Slate 900 */
+  --color-text-secondary: #475569; /* Slate 600 */
+  --color-text-muted: #94A3B8; /* Slate 400 */
+}
+
+/* === Global Premium Light Baseline === */
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+}
+
+body {
+  font-family: 'Outfit', 'Poppins', sans-serif;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Elegant Scrollbar === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* === Premium Glass & Shadows === */
+.premium-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+}
+
+.premium-glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+}
+
+.premium-glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* === Text Gradients === */
+.gradient-text-primary {
+  background: linear-gradient(135deg, var(--color-primary-gradient-start), var(--color-primary-gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-cook {
+  background: linear-gradient(135deg, var(--color-cook-gradient-start), var(--color-cook-gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* === Soft Background Patterns === */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+/* === Video Overlays for Light Mode === */
+.video-hero-vignette {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+.video-overlay-light {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* === Premium Map Overrides (Light) === */
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  padding: 0 !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF !important;
+}
+
+.leaflet-container {
+  background: #F8FAFC !important;
+  font-family: 'Outfit', sans-serif !important;
+}
