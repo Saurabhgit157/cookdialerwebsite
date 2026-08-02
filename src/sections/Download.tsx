@@ -48,7 +48,7 @@ export const Download: React.FC = () => {
               
               {/* Bottom Phone Image */}
               <img
-                src="/assets/bottom-phone-screen.png"
+                src="assets/bottom-phone-screen.png"
                 alt="Cook Dialer App Release"
                 className="w-full h-full object-fill block border-0 p-0 m-0 relative z-10"
               />

@@ -82,7 +82,7 @@ export default function Hero() {
 
           {/* Right Column: 3D Interactive Scene */}
           <div className="flex-1 w-full h-[450px] md:h-[550px] lg:h-[650px] relative">
-            <HeroScene screenImage="/assets/phone-screen.png" />
+            <HeroScene screenImage="assets/phone-screen.png" />
           </div>
 
         </div>

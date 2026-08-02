@@ -30,13 +30,13 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   scale = 1,
-  screenImage = '/assets/phone-screen.png',
+  screenImage = 'assets/phone-screen.png',
   screenVideo,
 }) => {
   const groupRef = useRef<THREE.Group>(null);
   const [mediaSrc, setMediaSrc] = useState<{ type: 'video' | 'image' | 'ui'; url?: string }>({
     type: 'image',
-    url: screenImage || '/assets/phone-screen.png',
+    url: screenImage || 'assets/phone-screen.png',
   });
 
   useEffect(() => {

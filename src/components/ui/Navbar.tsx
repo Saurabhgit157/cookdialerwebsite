@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ mode, onModeChange }) => {
             <div className={`relative w-10 h-10 rounded-xl p-[1.5px] shadow-sm ${isCook ? 'bg-gradient-to-tr from-[#10B981] to-[#047857] shadow-emerald-500/20' : 'bg-gradient-to-tr from-[#FF4747] to-[#FF8A00] shadow-[#FF4747]/20'}`}>
               <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1.5">
                 <img
-                  src="/assets/logo.png"
+                  src="assets/logo.png"
                   alt="Cook Dialer Logo"
                   className="w-full h-full object-contain"
                 />

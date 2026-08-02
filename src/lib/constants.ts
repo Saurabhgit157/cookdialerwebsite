@@ -9,9 +9,9 @@ export const BRAND = {
 } as const;
 
 export const VIDEO_BACKGROUNDS = {
-  hero: '/assets/kitchen-4k.mp4',
-  heroFallback: '/assets/kitchen-bg.mp4',
-  cta: '/assets/kitchen-bg.mp4',
+  hero: 'assets/kitchen-4k.mp4',
+  heroFallback: 'assets/kitchen-bg.mp4',
+  cta: 'assets/kitchen-bg.mp4',
 } as const;
 
 export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.cookdialer.app&hl=en_IN';
