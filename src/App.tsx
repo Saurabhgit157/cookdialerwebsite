@@ -12,9 +12,11 @@ export default function App() {
   useEffect(() => {
     // Route determination based on pathname or hash (/cook, /partner, #cook, #partner)
     const checkRoute = () => {
-      const path = window.location.pathname.toLowerCase();
       const hash = window.location.hash.toLowerCase();
-      if (path.includes('/cook') || path.includes('/partner') || hash.includes('cook') || hash.includes('partner')) {
+      const search = window.location.search.toLowerCase();
+      
+      // Explicitly check hash (#cook, #partner) or search query to avoid repo name "cookdialerwebsite" matching /cook
+      if (hash.includes('cook') || hash.includes('partner') || search.includes('cook')) {
         setMode('cook');
       } else {
         setMode('customer');
