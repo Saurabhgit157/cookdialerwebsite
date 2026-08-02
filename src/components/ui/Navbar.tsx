@@ -8,7 +8,7 @@ interface NavbarProps {
   onModeChange: (newMode: 'customer' | 'cook') => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ mode, onModeChange }) => {
+const Navbar: React.FC<NavbarProps> = ({ mode }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
 import { PRICING_DATA } from '../lib/constants';

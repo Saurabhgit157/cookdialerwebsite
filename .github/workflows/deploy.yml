@@ -32,6 +32,16 @@ jobs:
       - name: Build Web Application
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          echo "--- dist/ contents ---"
+          ls -la dist/
+          echo "--- dist/assets/ contents ---"
+          ls -la dist/assets/
+          echo "--- checking index.html for built JS ---"
+          cat dist/index.html
+          touch dist/.nojekyll
+
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:

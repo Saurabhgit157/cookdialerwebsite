@@ -1,8 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import SectionHeading from '../components/ui/SectionHeading';
 import AnimatedCard from '../components/ui/AnimatedCard';
-import Button from '../components/ui/Button';
 import { TESTIMONIALS } from '../lib/constants';
 
 const audiences = [

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import HeroScene from '../components/3d/HeroScene';
 import Button from '../components/ui/Button';

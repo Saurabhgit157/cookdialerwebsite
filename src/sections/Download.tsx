@@ -1,10 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
 import { CONTACT, PLAY_STORE_URL } from '../lib/constants';
 
-export const Download: React.FC = () => {
+export const Download = () => {
   return (
     <section id="download" className="py-24 bg-slate-50 relative overflow-hidden text-slate-900">
       <div className="container mx-auto px-4 md:px-8 relative z-10">

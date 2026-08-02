@@ -1,7 +1,7 @@
-import React, { Suspense, useState } from 'react';
+import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { APP_SCREENS } from '../lib/constants';
 import { ProductShowcaseScene } from '../components/3d/ProductShowcaseScene';
 import SectionHeading from '../components/ui/SectionHeading';
