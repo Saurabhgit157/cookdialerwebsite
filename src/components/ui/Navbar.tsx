@@ -27,11 +27,11 @@ const Navbar: React.FC<NavbarProps> = ({ mode }) => {
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Why Us', href: '#features' },
     { label: 'Trust & Safety', href: '#trust' },
-    { label: 'Cook Partner Portal 👨‍🍳', href: '#cook' },
+    { label: 'Cook Partner Portal 👨‍🍳', href: '?portal=cook' },
   ];
 
   const cookNavLinks = [
-    { label: 'Customer Site 🏠', href: '#customer' },
+    { label: 'Customer Site 🏠', href: '?' },
     { label: 'Partner Benefits', href: '#cook-benefits' },
     { label: 'Earnings Calculator', href: '#cook-earnings' },
     { label: 'Apply Now', href: '#cook-apply' },
@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ mode }) => {
       >
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group z-50">
+          <a href="?" className="flex items-center gap-3 group z-50">
             <div className={`relative w-10 h-10 rounded-xl p-[1.5px] shadow-sm ${isCook ? 'bg-gradient-to-tr from-[#10B981] to-[#047857] shadow-emerald-500/20' : 'bg-gradient-to-tr from-[#FF4747] to-[#FF8A00] shadow-[#FF4747]/20'}`}>
               <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1.5">
                 <img

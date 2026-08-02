@@ -6,17 +6,22 @@ import Footer from './sections/Footer';
 import CustomerPage from './pages/CustomerPage';
 import CookPartnerPage from './pages/CookPartnerPage';
 
+const getInitialMode = (): 'customer' | 'cook' => {
+  if (typeof window === 'undefined') return 'customer';
+  const search = window.location.search.toLowerCase();
+  const hash = window.location.hash.toLowerCase();
+  return (search.includes('portal=cook') || search.includes('role=cook') || hash === '#cook' || hash === '#partner') ? 'cook' : 'customer';
+};
+
 export default function App() {
-  const [mode, setMode] = useState<'customer' | 'cook'>('customer');
+  const [mode, setMode] = useState<'customer' | 'cook'>(getInitialMode);
 
   useEffect(() => {
-    // Route determination based on pathname or hash (/cook, /partner, #cook, #partner)
     const checkRoute = () => {
-      const hash = window.location.hash.toLowerCase();
       const search = window.location.search.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
       
-      // Explicitly check hash (#cook, #partner) or search query to avoid repo name "cookdialerwebsite" matching /cook
-      if (hash.includes('cook') || hash.includes('partner') || search.includes('cook')) {
+      if (search.includes('portal=cook') || search.includes('role=cook') || hash === '#cook' || hash === '#partner') {
         setMode('cook');
       } else {
         setMode('customer');
